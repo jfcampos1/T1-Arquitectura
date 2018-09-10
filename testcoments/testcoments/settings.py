@@ -25,12 +25,13 @@ SECRET_KEY = '28@6hbctom!s!ipi1*4#)-b9y1=-jouf#9br6ej-zc#p_kz-5y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['18.223.21.210']
+ALLOWED_HOSTS = ['18.223.21.210','localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'chats.apps.ChatsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,8 +76,12 @@ WSGI_APPLICATION = 'testcoments.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'comentarioschat',
+        'USER': 'comentarios',
+        'PASSWORD': '1234asdf',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 

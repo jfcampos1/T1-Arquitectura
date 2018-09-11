@@ -1,10 +1,11 @@
 from django.db import models
 
 # Create your models here.
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    ip_address = models.GenericIPAddressField(protocol = 'IPv4')
-    pub_date = models.DateTimeField('date published')
+
+class Comment(models.Model):
+    text = models.CharField(max_length=200)
+    ip_address = models.GenericIPAddressField()
+    created_date = models.DateTimeField()
 
     def __str__(self):
-        return self.question_text
+        return self.text

@@ -1,0 +1,31 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'chats/style.css' %}">
+
+<h1>{{ question.question_text }}</h1>
+
+{% if comments_list %}
+<table style="width:70%">
+  <tr>
+    <th>Comment</th>
+    <th>Time</th>
+    <th>IP</th>
+  </tr>
+    {% for question in comments_list %}
+    <tr>
+        <td>{{ question.text }}</td>
+        <td>{{ question.created_date }}</td>
+        <td>{{ question.ip_address }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <p>No Coments are available.</p>
+{% endif %}
+<br>
+<h1>New comment</h1>
+<form action = "add_comment_to_post/" method="POST" id = "usrform">{% csrf_token %}
+  <textarea rows="4" cols="30" name="text" form="usrform"> </textarea>
+    <input type="hidden" name="next" value="{{ request.path }}">
+    <input type = "submit">
+</form>
